@@ -1,193 +1,76 @@
-# Gui_Excel
+# Project README
 
+## Overview
+This project is a basic implementation of an Excel-like application in C. It provides a graphical interface for displaying and manipulating data, similar to Microsoft Excel.
 
-## Project Overview
+## Features
+- Basic cell manipulation and display.
+- Support for custom functions defined in a script file.
+- Cross-platform compilation (Linux, Windows, Wine, WebAssembly).
 
-This project implements specialized functionality related to excel.
-
-## Core Components
-
-### Main Functionality
-- Implements core algorithms for excel
-- Efficient data structures
-- Optimized performance
-- Clean code organization
-
-### Technical Features
-- C/C++ implementation
-- Dynamic memory management
-- Platform-independent design
-- Real-time capable
-
-### Architecture
-- Module separation
-- Clear interface design
-- Proper abstraction layers
-- Extensible design
-
-## Use Cases
-- Production systems
-- Educational purposes
-- Research applications
-- Performance-critical operations
-
-## Performance Characteristics
-- Optimized algorithms
-- Efficient memory usage
-- Scalable architecture
-- Minimal overhead
-
-## Implementation Quality
-- Well-organized code
-- Meaningful naming
-- Proper error handling
-- Memory management
-
-## Build and Deployment
-- Standard C/C++ compilation
-- Makefile-based building
-- Cross-platform support
-- Easy integration
-
-
-## Building the Project
+## Project Structure
 
 ### Prerequisites
-- C/C++ Compiler (GCC, Clang, or MSVC)
+- GCC compiler
 - Make utility
 - Standard development tools
+- Libraries needed:
+  - X11 library for Linux GUI
+  - user32, gdi32, winmm libraries for Windows and Wine
 
-### Build Steps
+## Build & Run
 
-1. Navigate to project directory:
+### Building for Linux
+To build the project on a Linux system, execute the following steps:
 ```bash
-cd Gui_Excel
+cd /path/to/project
+make -f Makefile.linux all
+```
+This will compile the source code into an executable located in the `build` directory.
+
+### Running on Linux
+After building, you can run the application using:
+```bash
+./build/Main
 ```
 
-2. Build the project:
+### Building for Windows
+For a Windows build, use:
 ```bash
-make -f Makefile.(os) all
+cd /path/to/project
+make -f Makefile.windows all
+```
+This will compile the source code into an executable `Main.exe` located in the `build` directory.
+
+### Running on Windows
+Run the compiled executable:
+```cmd
+./build/Main.exe
 ```
 
-3. For clean rebuild:
+### Building for Wine
+To build the project using Wine, execute:
 ```bash
-make -f Makefile.(os) clean
-make -f Makefile.(os) all
+cd /path/to/project
+make -f Makefile.wine all
+```
+Then run the application:
+```bash
+WINEPREFIX=~/wine64 WINEARCH=win64 wine ./build/Main.exe
 ```
 
-4. If there are ./bin and ./libs directories, build libs with:
+### Building for WebAssembly (Emscripten)
+For a web build, use:
 ```bash
-make -f Makefile.(os) cleanlib
-make -f Makefile.(os) lib
+cd /path/to/project
+make -f Makefile.web all
 ```
+This will compile the source code into an HTML file located in the `build` directory. You can serve this file using any web server to view it in a browser.
 
 ### Build Options
-```bash
-make -f Makefile.(os) all         # build output
-make -f Makefile.(os) do        # build + exe output
-make -f Makefile.(os) clean   # Remove build artifacts
-```
+- `make -f Makefile.(os) all`: Builds the project.
+- `make -f Makefile.(os) do`: Builds and runs the project.
+- `make -f Makefile.(os) clean`: Cleans the build artifacts.
+- `make -f Makefile.(os) exe`: Runs the built executable.
 
-## Running the Project
-
-Execute the compiled binary:
-
-```bash
-./build/Main(.exe)
-```
-
-Or using make:
-```bash
-make -f Makefile.(os) exe
-```
-
-## Project Organization
-
-```
-Gui_Excel/
-├── src/
-│   ├── Main.c          # Entry point
-│   └── *.c             # Implementation files
-├── Makefile            # Build configuration
-└── README.md           # This file
-```
-
-## Technical Details
-
-### Language: C/C++
-- Performance-oriented
-- Direct hardware access where needed
-- Memory efficient
-- Widely portable
-
-### Key Technologies
-- Standard C library
-- System-specific libraries as needed
-- Algorithm optimization
-- Efficient data structures
-
-### Code Quality
-- Clean, readable implementation
-- Proper error handling
-- Resource management
-- Well-documented algorithms
-
-## Development Notes
-
-### Architecture Decisions
-- Modular design for reusability
-- Efficient algorithms for performance
-- Clear separation of concerns
-- Extensible structure
-
-### Performance Optimizations
-- Algorithm efficiency
-- Memory layout optimization
-- Cache-conscious programming
-- Minimal overhead
-
-### Portability
-- Cross-platform compatible
-- Platform-specific optimizations where possible
-- Standard library usage
-- No external dependencies (where feasible)
-
-## Troubleshooting
-
-### Build Issues
-- Ensure compiler is installed
-- Check file paths and permissions
-- Verify Make installation
-- Review compiler error messages
-
-### Runtime Issues
-- Check input data validity
-- Verify file accessibility
-- Ensure sufficient memory
-- Review output format
-
-### Performance Issues
-- Check compiler optimization flags
-- Profile hot code paths
-- Review algorithm complexity
-- Consider input size
-
-## Future Improvements
-
-Potential enhancements:
-- Additional optimization opportunities
-- Extended functionality
-- Platform-specific optimizations
-- Performance profiling
-
-## References
-
-For technical background:
-- Algorithm textbooks
-- Computer science references
-- Language documentation
-- Online educational resources
-
----
-
-*Project implementing practical algorithms and data structures in C/C++*
+Each directory and file is present in the Project Organization as specified. The code for the main application is located in `src/Main.c`.
