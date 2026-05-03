@@ -111,7 +111,7 @@ void Update(AlxWindow* w){
             if(content){
                 CStr_RenderAlxFont(
                     WINDOW_STD_ARGS,
-                    &w->AlxFont,
+                    &w->font,
                     content,
                     px,
                     py,
