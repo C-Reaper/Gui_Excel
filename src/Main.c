@@ -54,6 +54,19 @@ void Update(AlxWindow* w){
     }
     */
 
+    if(Stroke(ALX_MOUSE_R).PRESSED){
+        const unsigned int ix = (unsigned int)floorf((float)(w->MouseX - OFFSET_X) / (float)CELL_DX);
+        const unsigned int iy = (unsigned int)floorf((float)(w->MouseY - OFFSET_Y) / (float)CELL_DY);
+        if(ix == cellx && iy == celly){
+            ExcelCell* ec = Excel_Get(&excel,cellx,celly);
+            if(ec){
+                CStr cstr = String_CStr(&edited.In.Buffer);
+                Excel_Set(&excel,cellx,celly,cstr);
+                CStr_Free(&cstr);
+                edited.In.Enabled = 0;
+            }
+        }
+    }
     if(!isEnabled){
         cellx = -1;
         celly = -1;
@@ -81,22 +94,6 @@ void Update(AlxWindow* w){
 
         if(scrolly < 0.0f) scrolly = 0.0f;
         if(scrollx < 0.0f) scrollx = 0.0f;
-    }else{
-        if(Stroke(ALX_MOUSE_L).PRESSED){
-            const unsigned int ix = (unsigned int)floorf((float)(w->MouseX - OFFSET_X) / (float)CELL_DX);
-            const unsigned int iy = (unsigned int)floorf((float)(w->MouseY - OFFSET_Y) / (float)CELL_DY);
-
-            if(ix == cellx && iy == celly){
-                ExcelCell* ec = Excel_Get(&excel,cellx,celly);
-                if(ec){
-                    CStr cstr = String_CStr(&edited.In.Buffer);
-                    Excel_Set(&excel,cellx,celly,cstr);
-                    CStr_Free(&cstr);
-
-                    edited.In.Enabled = 0;
-                }
-            }
-        }
     }
 
 	Clear(BLACK);
